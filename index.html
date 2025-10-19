@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PUBG UC — Resellers August</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Preloader ---------- */
+    @keyframes square-animation {
+      0% { left: 0; top: 0; }
+      10.5% { left: 0; top: 0; }
+      12.5% { left: 32px; top: 0; }
+      23% { left: 32px; top: 0; }
+      25% { left: 64px; top: 0; }
+      35.5% { left: 64px; top: 0; }
+      37.5% { left: 64px; top: 32px; }
+      48% { left: 64px; top: 32px; }
+      50% { left: 32px; top: 32px; }
+      60.5% { left: 32px; top: 32px; }
+      62.5% { left: 32px; top: 64px; }
+      73% { left: 32px; top: 64px; }
+      75% { left: 0; top: 64px; }
+      85.5% { left: 0; top: 64px; }
+      87.5% { left: 0; top: 32px; }
+      98% { left: 0; top: 32px; }
+      100% { left: 0; top: 0; }
+    }
+
+    .loader {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      transform: rotate(45deg);
+      margin: 40vh auto;
+    }
+
+    .loader-square {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 28px;
+      height: 28px;
+      margin: 2px;
+      border-radius: 0px;
+      background: white;
+      animation: square-animation 3s ease-in-out infinite both;
+    }
+
+    .loader-square:nth-of-type(1) { animation-delay: 0s; }
+    .loader-square:nth-of-type(2) { animation-delay: -0.4286s; }
+    .loader-square:nth-of-type(3) { animation-delay: -0.8571s; }
+    .loader-square:nth-of-type(4) { animation-delay: -1.2857s; }
+    .loader-square:nth-of-type(5) { animation-delay: -1.7143s; }
+    .loader-square:nth-of-type(6) { animation-delay: -2.1429s; }
+    .loader-square:nth-of-type(7) { animation-delay: -2.5714s; }
+
+    /* ---------- Theme ---------- */
+    :root {
+      --bg: #071923;
+      --accent: #66d1e8;
+      --accent-2: #4fc3df;
+      --muted: #9fbfc8;
+      --card: #0f2a33;
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #cfeff4 0%, #ddf6f9 3%), var(--bg);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #e6fbff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 10px;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 950px;
+      background: linear-gradient(180deg, rgba(7,25,35,0.96), rgba(4,17,22,0.98));
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(2,18,26,0.65);
+      overflow: hidden;
+      padding: 26px;
+      position: relative;
+    }
+
+    .wave-decor {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at 10% 10%, rgba(79,195,223,0.06) 0%, transparent 10%),
+        radial-gradient(ellipse at 95% 70%, rgba(102,209,232,0.04) 0%, transparent 18%),
+        linear-gradient(180deg, rgba(10,34,42,0.12), rgba(0,0,0,0) 40%);
+      mix-blend-mode: overlay;
+      z-index: 0;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #002428;
+      font-size: 20px;
+      box-shadow: 0 8px 18px rgba(79,195,223,0.3);
+    }
+
+    .pubg_img {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: #dff9ff;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    main {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Price grid */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      transition: transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(2,18,26,0.55);
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 2px;
+    }
+
+    .uc-qty {
+      font-weight: 700;
+      font-size: 17px;
+      color: #dff9ff;
+    }
+
+    .uc-price {
+      color: var(--accent-2);
+      font-weight: 800;
+      margin-top: 2px;
+      font-size: 17px;
+    }
+
+    .meta {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align:center;
+    }
+
+    /* Extra packs container */
+    .extra-packs {
+      margin-top: 6px;
+    }
+    .extra-header { margin: 0 0 10px 0; color: #dff9ff; font-size: 16px; }
+
+    .contact-box {
+      padding: 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .contact-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-item {
+      background: var(--glass);
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.03);
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .telegram-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg,#00a2d1,#0072a8);
+      border: none;
+      color: #fff;
+      font-weight: 800;
+      width: 100%;
+      margin-top: 12px;
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+
+    .telegram-btn:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .card img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .price-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .extra-packs .card { flex-direction: row; align-items: center; gap: 12px; justify-content: flex-start; padding: 12px; }
+      .extra-packs .card img { width: 42px; height: 42px; margin: 0; }
+      .extra-packs .meta { text-align: left; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloaderOverlay" style="position:fixed; inset:0; background: linear-gradient(180deg,#072733 0%, #001218 60%); z-index:9999; display:flex; align-items:center; justify-content:center;">
+    <div style="text-align:center; color:#bff6ff;">
+      <div class="loader" aria-hidden="true">
+        <div class="loader-square"></div>
+        <div class="loader-square"></div>
+        <div class="loader-square"></div>
+        <div class="loader-square"></div>
+        <div class="loader-square"></div>
+        <div class="loader-square"></div>
+        <div class="loader-square"></div>
+      </div>
+      <div style="margin-top:16px; font-weight:600;">Resellers August — Loading</div>
+    </div>
+  </div>
+
+  <div class="wrapper" role="main" aria-labelledby="pageTitle">
+    <div class="wave-decor" aria-hidden="true"></div>
+
+    <header>
+      <div class="brand">
+        <!-- <div class="logo"></div> -->
+         <div class="pubg_img"><img src="" alt=""></div>
+        <div>
+          <h1 id="pageTitle">PUBG UC — Resellers August</h1>
+          <div class="subtitle">Fast — Secure — Trusted reseller.</div>
+          <div class="subtitle"> K Pay or Wave.</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div class="badge" id="timeBadge" style="background:linear-gradient(90deg,#023a43,#0e7f90);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px;color:#cfffff;"></div>
+        <div style="font-size:12px;margin-top:4px;">Opening time: 10 AM to 10PM <br> Price can change after 10PM<span id="localTime"></span></div>
+      </div>
+    </header>
+
+    <main>
+      <section aria-label="UC Packages">
+        <h2 style="margin:0 0 10px 0;">UC Packages</h2>
+        <div class="price-grid" id="priceGrid"></div>
+
+        <!-- Extra Packs (added back) -->
+        <div class="extra-packs" aria-label="Extra Packs">
+          <h3 class="extra-header">Extra Packs</h3>
+          <div class="price-grid" id="extraGrid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+            <!-- Extra pack cards injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-box" aria-label="Contact and payments">
+        <div class="contact-title">Contact & Payments</div>
+        <div class="contact-list">
+          <div class="contact-item"><strong>K Pay</strong> 09450054309 (U Kyi Lwin)</div>
+          <div class="contact-item"><strong>Wave</strong> 09795633010 (Theingi Khaing) — <em>+100MMK charge</em></div>
+          <div class="contact-item"><strong>Telegram</strong> <span id="tgLinkText">t.me/resellers_august</span></div>
+        </div>
+        <button class="telegram-btn" id="openTgBtn">Open Telegram Channel</button>
+      </section>
+    </main>
+
+    <footer>
+      <div class="small">© <strong>Resellers August</strong> — Secure UC Delivery</div>
+      <!-- <div class="small">Made professional for your business</div> -->
+    </footer>
+  </div>
+
+  <script>
+    // Main package data (images are placeholders; replace with your assets if you have them)
+    const packages = [
+      { qty: "60 UC", price: "3,650 MMK", img: "./img/uc.jpg" },
+      { qty: "325 UC", price: "18,100 MMK", img: "./img/uc.jpg" },
+      { qty: "660 UC", price: "36,200 MMK", img: "./img/uc.jpg" },
+      { qty: "1800 UC", price: "89,500 MMK", img: "./img/uc.jpg" },
+      { qty: "3850 UC", price: "17,900 MMK", img: "./img/uc.jpg" }, // kept original provided value
+      { qty: "8100 UC", price: "359,000 MMK", img: "./img/uc.jpg" }
+    ];
+
+    const extraPacks = [
+      { title: "Material Pack", price: "13,500 MMK", meta: "Useful add-on for beginners",  },
+      { title: "First Purchase Pack", price: "4,800 MMK", meta: "Welcome pack — limited offer",  },
+      { title: "Mythic Emblem Pack", price: "22,000 MMK", meta: "Premium badge & emblem",  }
+    ];
+
+    const priceGrid = document.getElementById('priceGrid');
+    packages.forEach((p, idx) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.qty} image" loading="lazy">
+        <div class="uc-qty">${p.qty}</div>
+        <div class="uc-price">${p.price}</div>
+        <div class="meta">Fast & secure delivery — trusted reseller</div>
+      `;
+      // click opens telegram with prefilled message (optional)
+      card.addEventListener('click', () => {
+        const message = encodeURIComponent(`Hello Resellers August, I want to buy ${p.qty} (${p.price}). Please confirm payment details.`);
+        window.open(`https://t.me/resellers_august?start=order&text=${message}`, '_blank');
+      });
+      priceGrid.appendChild(card);
+    });
+
+    // Extra packs injection
+    const extraGrid = document.getElementById('extraGrid');
+    extraPacks.forEach(pack => {
+      const c = document.createElement('div');
+      c.className = 'card';
+      c.innerHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div class="uc-qty">${pack.title}</div>
+          <div class="uc-price">${pack.price}</div>
+          <div class="meta">${pack.meta}</div>
+        </div>
+      `;
+      // click behavior for extras
+      c.addEventListener('click', () => {
+        const message = encodeURIComponent(`Hello Resellers August, I want to buy ${pack.title} (${pack.price}). Please confirm payment details.`);
+        window.open(`https://t.me/resellers_august?start=order&text=${message}`, '_blank');
+      });
+      extraGrid.appendChild(c);
+    });
+
+    // Telegram button + copy link UX
+    document.getElementById('openTgBtn').addEventListener('click', () => {
+      window.open('https://t.me/resellers_august', '_blank');
+    });
+
+    document.getElementById('tgLinkText').addEventListener('click', () => {
+      navigator.clipboard?.writeText('https://t.me/resellers_august').then(()=> {
+        alert('Telegram link copied to clipboard');
+      }).catch(()=> {
+        window.open('https://t.me/resellers_august','_blank');
+      });
+    });
+
+    // // Time display & badge
+    // function updateTimeAndPolicy(){
+    //   const now = new Date();
+    //   const h = now.getHours().toString().padStart(2,'0');
+    //   const m = now.getMinutes().toString().padStart(2,'0');
+    //   document.getElementById('localTime').textContent = `${h}:${m}`;
+
+    //   const badge = document.getElementById('timeBadge');
+    //   if (now.getHours() >= 21 || now.getHours() < 6) {
+    //     badge.textContent = 'NIGHT RATES';
+    //     badge.style.background = 'linear-gradient(90deg,#b04b3b,#8b2a21)';
+    //   } else {
+    //     badge.textContent = 'OPEN';
+    //     badge.style.background = 'linear-gradient(90deg,#023a43,#0e7f90)';
+    //   }
+    // }
+    // updateTimeAndPolicy();
+    // setInterval(updateTimeAndPolicy, 30000);
+
+    // remove preloader after load
+    window.addEventListener('load', () => {
+      setTimeout(()=> {
+        const pre = document.getElementById('preloaderOverlay');
+        if(pre){ pre.style.transition = 'opacity .5s ease'; pre.style.opacity = 0; setTimeout(()=> pre.remove(), 600); }
+      }, 650);
+    });
+
+  </script>
+</body>
+</html>
